@@ -23,6 +23,14 @@ module.exports = {
             external_base_domain:'api-%s.cometchat.io',
             internae_base_domain:'api-%s.cometchat-ship.io'
         },
+        "215022102f986aa4":{
+            toAppId: "215022102f986aa4",
+            apiKey: "afd3e04f97a0f4fd6aacff261a4883810be9effb",
+            region: "eu",
+            domain:"api-eu.cometchat.io",
+            external_base_domain:'api-%s.cometchat.io',
+            internae_base_domain:'api-%s.cometchat-ship.io'
+        },
         abcde: {
             
             toAppId: "abcde",

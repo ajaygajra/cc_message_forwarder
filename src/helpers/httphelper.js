@@ -24,6 +24,7 @@ module.exports = {
                         headers
                     }
 
+                    console.log({payload,url});
                     fetch(url, payload
                     ).then(response => {
                         console.log("This is response", response.json().then(res => {

@@ -19,8 +19,9 @@ messages.post("/", function (req, res) {
 
         const { toAppId, apiKey, region } = data.apiKeys[req.appId];
         const payLoad = req.body;
-        const { sender, category, receiver, receiverType, appId, type } = { ...payLoad.data, ...payLoad };
-        const messageData = (payLoad.data.data)
+        const { sender, category, receiver, receiverType, appId, type } = { ...payLoad.data, ...payLoad };        
+        const messageData = (payLoad.data.data);
+        const metadata=messageData.metadata?messageData.metadata:{};
         delete messageData['entities'];
         delete messageData['updatedAt'];
 
@@ -29,16 +30,25 @@ messages.post("/", function (req, res) {
             type,
             receiver,
             receiverType, data: messageData,
+            skipWebhooks:["sync_service"]
         }, toHeaders = {
             apiKey,
             onBehalfOf: sender
         }, { path, method } = formEndpoint(toAppId, endPointFactory.sendMessage.id);
-
-        httphelper.makeHttpCall(toPayload, method, toHeaders, path);
+            
+        
+        
+        // if(!metadata['__private']){
+        //     metadata["__private"]="service";
+        // }
+        console.log({toPayload})
+            httphelper.makeHttpCall(toPayload, method, toHeaders, path);
+        
 
         res.send({ toPayload, toHeaders });
 
     } catch (e) {
+        console.log({e});
         res.status(404);
         res.send("no such app presence");
     }
