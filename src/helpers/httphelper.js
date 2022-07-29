@@ -10,6 +10,7 @@ const endPointFactory = {
     }
 }
 module.exports = {
+    
     makeHttpCall: (data = {}, method = 'post', headers = {}, url = undefined) => {
 
         headers = { ...headers, 'Content-Type': 'application/json' }
@@ -24,21 +25,28 @@ module.exports = {
                         headers
                     }
 
-                    console.log({payload,url});
                     fetch(url, payload
                     ).then(response => {
-                        console.log("This is response", response.json().then(res => {
-                            console.log(JSON.stringify(res));
-                        }), error => {
-                            console.log(JSON.stringify(error));
-                        })
+                        // try{
+                        //     console.log("This is response", response.json().then(res => {
+                        //         console.log(JSON.stringify(res));
+                        //     }), error => {
+                        //         console.log(JSON.stringify(error));
+                        //     })
+                        // }catch(e){
+                        //     console.log(e)
+                        // }
+                        
                     }, error => {
-                        console.log(JSON.stringify(error));
+                        console.log({error})
+                        // try{
+                        //     console.log(error);
+
+                        // }catch(e){
+                        //     console.log(e)
+                        // }
+                        
                     })
-
-
-                    console.log(data);
-
 
 
                     break;

@@ -5,7 +5,6 @@ const appId = require('./appId');
 const apps = express();
 
 apps.use('/:appId', (req, res, next) => {
-    console.log('here!1');
     req.appId = req.params.appId;
     next();
 }, appId);
